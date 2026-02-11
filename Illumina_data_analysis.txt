@@ -1,0 +1,15 @@
+#Data analysis in R, see the following commands
+
+#installing the dada2 package
+if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager"); BiocManager::install("dada2", update=FALSE, ask=FALSE)
+library(dada2)
+
+
+#loading the Data
+path <- "C/Users/marketa.sokolova/Desktop/Maky test/raw_data/Illumina_data"
+
+fnFs <- sort(list.files(path, pattern="\\.fastq\\.gz$", full.names = TRUE))
+sample.names <- sapply(strsplit(basename(fnFS), "_"), '[', 1)
+
+#filtering and triming - cleaning up the Data
+filtFs <- file.path(path, "filtered", paste0(sample.names, "_filt.fastq.gz"))
